@@ -873,7 +873,11 @@ body {
   align-items: start;
   padding: 50px 0px;
 }
-
+@media (max-width: 800px) {
+  .top__group {
+    display: block;
+  }
+}
 .list__link {
   color: #fff;
   font-weight: 600;
@@ -883,9 +887,21 @@ body {
   display: inline-block;
 }
 
-@media(max-width:860px) {
+@media(max-width:800px) {
   .list__items {
     margin-bottom: 35px;
+    display: none;
+  }
+  .list__items.active {
+    display: block;
+    padding: 0 120px;
+  }
+}
+
+@media(max-width:400px) {
+  .list__items.active {
+    display: block;
+    padding: 0 80px;
   }
 }
 .list__item:not(:last-child) {
@@ -895,11 +911,51 @@ body {
 }
 
 .list__link.decor {
+
   font-weight: 700;
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0.1px;
   margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+
+  .list__link.decor {
+    padding: 0px 0px 0px 30px;
+  }
+  .list__link.decor::before,
+  .list__link.decor::after {
+    content: "";
+    width: 10px;
+    height: 2px;
+    position: absolute;
+    background-color: #fff;
+    top: 11px;
+    transition: all 0.4s ease 0s;
+  }
+
+  .list__link.decor::before {
+
+    transform: rotate(40deg);
+    left: 0;
+  }
+
+  .decor::after {
+    transform: rotate(-40deg);
+    left: 6px;
+  }
+
+  .list__link.decor.deg::before,
+  .list__link.decor.deg::after {
+    background-color: #ff7b47;
+    transform: rotate(-40deg);
+  }
+  .list__link.decor.deg::after {
+    transform: rotate(40deg);
+  }
 }
 .list__link:focus,
 .list__link:hover {
